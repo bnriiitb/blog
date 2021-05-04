@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Key Driver Analysis | Thirst for Knowledge</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Key Driver Analysis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://bnriiitb.github.io/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html" />
+<meta property="og:url" content="https://bnriiitb.github.io/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html" />
+<meta property="og:site_name" content="Thirst for Knowledge" />
+<meta property="og:image" content="https://bnriiitb.github.io/blog/images/key_drivers.jpeg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-04T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"https://bnriiitb.github.io/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html","@type":"BlogPosting","headline":"Key Driver Analysis","dateModified":"2021-05-04T00:00:00-05:00","datePublished":"2021-05-04T00:00:00-05:00","image":"https://bnriiitb.github.io/blog/images/key_drivers.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://bnriiitb.github.io/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html"},"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://bnriiitb.github.io/blog/feed.xml" title="Thirst for Knowledge" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Thirst for Knowledge</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Key Driver Analysis</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-05-04T00:00:00-05:00" itemprop="datePublished">
+        May 4, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#key-driver-analysis">key-driver-analysis</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#shapley-regression">shapley-regression</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#driver-analysis">driver-analysis</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#importance-analysis">importance-analysis</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#relative-importance-analysis">relative-importance-analysis</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/bnriiitb/blog/tree/master/_notebooks/2021-05-04-key-driver-analysis.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/bnriiitb/blog/master?filepath=_notebooks%2F2021-05-04-key-driver-analysis.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/bnriiitb/blog/blob/master/_notebooks/2021-05-04-key-driver-analysis.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#What-is-Key-Driver-Analysis?">What is Key Driver Analysis? </a></li>
+<li class="toc-entry toc-h2"><a href="#How-is-it-different-from-traditional-predictive-models?">How is it different from traditional predictive models? </a></li>
+<li class="toc-entry toc-h2"><a href="#What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?">What are the supported target types to perform Key Driver Analysis? </a></li>
+<li class="toc-entry toc-h2"><a href="#How-to-perform-Key-Driver-Analysis?">How to perform Key Driver Analysis? </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Using-Generalized-Linear-Models-(GLMs)">Using Generalized Linear Models (GLMs) </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Downsides-of-using-GLM's-for-Key-Driver-Analysis:">Downsides of using GLM&#39;s for Key Driver Analysis: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#Using-Shapley-regression-or-Johnson’s-relative-weights">Using Shapley regression or Johnson’s relative weights </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Finally,-which-method-is-recommended-to-perform-Key-Driver-Analysis?">Finally, which method is recommended to perform Key Driver Analysis? </a></li>
+<li class="toc-entry toc-h2"><a href="#References">References </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-05-04-key-driver-analysis.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-is-Key-Driver-Analysis?">
+<a class="anchor" href="#What-is-Key-Driver-Analysis?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is Key Driver Analysis?<a class="anchor-link" href="#What-is-Key-Driver-Analysis?"> </a>
+</h2>
+<p><strong>Key Driver Analysis</strong> is also know as <strong>Importance Analysis</strong>, and <strong>Relative Importance Analysis</strong>. The goal of this analysis is to quantify the <em>relative importance</em> of each of the predictor variables in predicting the target variable. Each of the predictors is commonly referred to as a driver.</p>
+<p>Generally the output of Key Driver Analys is a table or chart showing the <em>Relative Importance</em> of the drivers (predictors).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-is-it-different-from-traditional-predictive-models?">
+<a class="anchor" href="#How-is-it-different-from-traditional-predictive-models?" aria-hidden="true"><span class="octicon octicon-link"></span></a>How is it different from traditional predictive models?<a class="anchor-link" href="#How-is-it-different-from-traditional-predictive-models?"> </a>
+</h2>
+<p>In classic predictive models the focus is on prediction, whereas with key driver analysis the main focus is on identifying the relative importance of the predictors (drivers).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?">
+<a class="anchor" href="#What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What are the supported target types to perform Key Driver Analysis?<a class="anchor-link" href="#What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?"> </a>
+</h2>
+<p>Key driver analysis can be performed on almost all types of target types that is binary, categorical and numerical.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-perform-Key-Driver-Analysis?">
+<a class="anchor" href="#How-to-perform-Key-Driver-Analysis?" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to perform Key Driver Analysis?<a class="anchor-link" href="#How-to-perform-Key-Driver-Analysis?"> </a>
+</h2>
+<p>Key driver analysis can be performed with the any of the following techniques.</p>
+<ol>
+<li>
+<strong>Correlations</strong> - <em>appropriate when we're not concerned about multi-collinearity.</em>
+</li>
+<li>
+<strong>Jaccard coefficient/index</strong> - <em>This is similar to correlation, except it is only appropriate when both the predictor and outcome variables are binary.</em>
+</li>
+<li>
+<strong>Generalized Linear Models (GLM)</strong><ul>
+<li>To conduct a valid key driver analysis we need to select an appropriate generalized linear model (GLM) which is consistent with our data.<ul>
+<li>
+<strong>Linear Regression</strong> <em>- for continues target variable</em>
+</li>
+<li>
+<strong>Logistic Regression</strong> <em>- for binary target variable</em>
+</li>
+<li>
+<strong>Quasi Poisson Regression</strong> <em>- for decimal target variable</em>
+</li>
+<li>
+<strong>Ordered Logistic Regression</strong> <em>- for rating or ordered numerical target variable</em>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong>Shapely Regression</strong> - <em>This a regularized regression, designed for situations where linear regression results are unreliable due to high correlations between predictors.</em>
+</li>
+<li>
+<strong>Johnson Relative Weights</strong> - <em>Similar to Shapley Regression, this is a regularized regression and it can be used for all types of target variables</em>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Using-Generalized-Linear-Models-(GLMs)">
+<a class="anchor" href="#Using-Generalized-Linear-Models-(GLMs)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Generalized Linear Models (GLMs)<a class="anchor-link" href="#Using-Generalized-Linear-Models-(GLMs)"> </a>
+</h3>
+<p>In general when we build GLM's it's often observed that the coefficients are negative, however in case of key driver analysis this is an indicative of a problem.
+The causes could be:</p>
+<ol>
+<li>The sign is wrong<ul>
+<li>The predictor variable is highly correlated with other predictors</li>
+<li>The predictor is unimportant</li>
+</ul>
+</li>
+<li>The predictor variable encoded incorrectly</li>
+</ol>
+<h4 id="Downsides-of-using-GLM's-for-Key-Driver-Analysis:">
+<a class="anchor" href="#Downsides-of-using-GLM's-for-Key-Driver-Analysis:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Downsides of using GLM's for Key Driver Analysis:<a class="anchor-link" href="#Downsides-of-using-GLM's-for-Key-Driver-Analysis:"> </a>
+</h4>
+<ol>
+<li>GLMs become highly unreliable when the predictors are highly correlated (multi-collinearity) and tend to pick up random patterns in the data, hence the possibility of incorrect signs.</li>
+<li>GLMs implicitly assume that predictors are on the same scale. So, it become hard to compare the coefficients directly. The most popular way to solve this problem is to divide the each value of predictor by it's standard deviation (i.e., to normalize or standardize the variables) but it does not necessarily solve the problem.</li>
+</ol>
+<p>The solution to the above 2 problems is to not use GLMs 😊, and to instead use models that are more reliable when there are high correlations and can handle feature that are on different scales, such as <strong>Shapley regression</strong> and <strong>Johnson’s relative weights</strong>. These techniques do not solve the problem of correlated predictors. Rather, they ensure that you get stable results in the presence of correlated predictors. At a conceptual level, the way they do this is by computing importance scores as a weighted average of predictors, where the weights are determined by the extent of intercorrelation between the predictors.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Using-Shapley-regression-or-Johnson’s-relative-weights">
+<a class="anchor" href="#Using-Shapley-regression-or-Johnson%E2%80%99s-relative-weights" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Shapley regression or Johnson’s relative weights<a class="anchor-link" href="#Using-Shapley-regression-or-Johnson%E2%80%99s-relative-weights"> </a>
+</h3>
+<p>As it's mentioned earlier, the traditional GLMs suffer from two practical challenges: sensitivity to high correlations between predictor variables, and, sensitivity to the scale of the predictor variables. Both problems can be addressed by using either Shapley regression or Johnson’s relative weights.</p>
+<p>The underlying math of both Shapley regression and Johnson’s relative weight ensures that both techniques always report a positive importance score.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Finally,-which-method-is-recommended-to-perform-Key-Driver-Analysis?">
+<a class="anchor" href="#Finally,-which-method-is-recommended-to-perform-Key-Driver-Analysis?" aria-hidden="true"><span class="octicon octicon-link"></span></a>Finally, which method is recommended to perform Key Driver Analysis?<a class="anchor-link" href="#Finally,-which-method-is-recommended-to-perform-Key-Driver-Analysis?"> </a>
+</h2>
+<p>Both Shapley regression and Johnson’s relative weights are designed to address the same two problems: correlations between predictor variables and predictor variables with different scales.</p>
+<p>The underlying theory of the two methods are completely different.</p>
+<ul>
+<li>Shapley regression is based on running lots of linear regressions with different subsets of predictor variables. </li>
+<li>Johnson’s relative weights is an orthonormal rotation of the predictor variables.</li>
+</ul>
+<p>Nevertheless, the two methods give essentially identical results, so there is no need to understand the intricacies of the two methods in order to choose one.
+There are, however, two practical difference between the methods:</p>
+<ul>
+<li>Shapley regression is only applicable for linear regression. </li>
+<li>Johnson’s Relative Weights is applicable for any GLM.</li>
+<li>Johnson’s relative weights is much faster to compute than Shapley Regression.</li>
+</ul>
+<p><strong>For these reasons, our preference is to always use Johnson’s relative weights 💪 for Key Driver Analysis</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash flash-error">
+    <svg class="octicon octicon-alert octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg>
+    <strong>Warning: </strong>Though the theoretical assumptions of <strong>Johnson’s relative weights</strong> and <strong>Shapley regression</strong> assumes a positive importance score. Sometimes we may see negative coefficients, which is a clear indication that key driver analysis is incorrect.
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">
+<a class="anchor" href="#References" aria-hidden="true"><span class="octicon octicon-link"></span></a>References<a class="anchor-link" href="#References"> </a>
+</h2>
+<ul>
+<li><a href="https://www.displayr.com/what-is-driver-analysis/">https://www.displayr.com/what-is-driver-analysis/</a></li>
+<li><a href="https://www.displayr.com/the-problem-with-using-multiple-linear-regression-for-key-driver-analysis-a-case-study-of-the-cola-market/">https://www.displayr.com/the-problem-with-using-multiple-linear-regression-for-key-driver-analysis-a-case-study-of-the-cola-market/</a></li>
+<li><a href="https://www.displayr.com/shapley-value-regression">https://www.displayr.com/shapley-value-regression</a></li>
+<li><a href="https://www.statisticshowto.com/relative-weights/">https://www.statisticshowto.com/relative-weights/</a></li>
+<li><a href="https://www.displayr.com/reasons-to-use-relative-weights/">https://www.displayr.com/reasons-to-use-relative-weights/</a></li>
+<li><a href="https://measuringu.com/key-drivers/">https://measuringu.com/key-drivers/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="bnriiitb/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
