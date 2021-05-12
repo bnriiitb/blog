@@ -1,11 +1,15 @@
 ---
 keywords: fastai
+description: "Key Driver Analysis"
 title: Key Driver Analysis
 toc: true 
+branch: master
 badges: true
 comments: true
 categories: [key-driver-analysis,driver-analysis,importance-analysis,relative-importance-analysis,johnson-relative-weights,shapley-regression]
+hide: false
 image: images/key_drivers.jpeg
+sticky_rank: 1
 nb_path: _notebooks/2021-05-04-key-driver-analysis.ipynb
 layout: notebook
 ---
@@ -19,12 +23,6 @@ layout: notebook
 
 <div class="container" id="notebook-container">
         
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<!-- ![key_drivers.jpeg](attachment:e680f564-e55c-48d1-a9a4-22a6b47e03a9.jpeg) -->
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="What-is-Key-Driver-Analysis?">What is Key Driver Analysis?<a class="anchor-link" href="#What-is-Key-Driver-Analysis?"> </a></h2><p><strong>Key Driver Analysis</strong> is also known as <strong>Importance Analysis</strong> and <strong>Relative Importance Analysis</strong>. The goal of this analysis is to quantify the relative importance of each of the predictor variables in predicting the target variable. Each of the predictors is commonly referred to as a driver.</p>
