@@ -21,38 +21,44 @@ layout: notebook
         
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-is-Key-Driver-Analysis?">What is Key Driver Analysis?<a class="anchor-link" href="#What-is-Key-Driver-Analysis?"> </a></h2><p><strong>Key Driver Analysis</strong> is also know as <strong>Importance Analysis</strong>, and <strong>Relative Importance Analysis</strong>. The goal of this analysis is to quantify the <em>relative importance</em> of each of the predictor variables in predicting the target variable. Each of the predictors is commonly referred to as a driver.</p>
-<p>Generally the output of Key Driver Analys is a table or chart showing the <em>Relative Importance</em> of the drivers (predictors).</p>
+<!-- ![key_drivers.jpeg](attachment:e680f564-e55c-48d1-a9a4-22a6b47e03a9.jpeg) -->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-is-Key-Driver-Analysis?">What is Key Driver Analysis?<a class="anchor-link" href="#What-is-Key-Driver-Analysis?"> </a></h2><p><strong>Key Driver Analysis</strong> is also known as <strong>Importance Analysis</strong> and <strong>Relative Importance Analysis</strong>. The goal of this analysis is to quantify the relative importance of each of the predictor variables in predicting the target variable. Each of the predictors is commonly referred to as a driver.</p>
+<p>Generally, the output of Key Driver Analysis is a table or chart showing the <em>Relative Importance</em> of the drivers (predictors).</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-is-it-different-from-traditional-predictive-models?">How is it different from traditional predictive models?<a class="anchor-link" href="#How-is-it-different-from-traditional-predictive-models?"> </a></h2><p>In classic predictive models the focus is on prediction, whereas with key driver analysis the main focus is on identifying the relative importance of the predictors (drivers).</p>
+<h2 id="How-is-it-different-from-traditional-predictive-models?">How is it different from traditional predictive models?<a class="anchor-link" href="#How-is-it-different-from-traditional-predictive-models?"> </a></h2><p>In classic predictive models, the focus is on prediction, whereas with key driver analysis the main focus is on identifying the relative importance of the predictors (drivers).</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?">What are the supported target types to perform Key Driver Analysis?<a class="anchor-link" href="#What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?"> </a></h2><p>Key driver analysis can be performed on almost all types of target types that is binary, categorical and numerical.</p>
+<h2 id="What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?">What are the supported target types to perform Key Driver Analysis?<a class="anchor-link" href="#What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?"> </a></h2><p>Key driver analysis can be performed on almost all types of target types that are binary, categorical, and numerical.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-perform-Key-Driver-Analysis?">How to perform Key Driver Analysis?<a class="anchor-link" href="#How-to-perform-Key-Driver-Analysis?"> </a></h2><p>Key driver analysis can be performed with the any of the following techniques.</p>
+<h2 id="How-to-perform-Key-Driver-Analysis?">How to perform Key Driver Analysis?<a class="anchor-link" href="#How-to-perform-Key-Driver-Analysis?"> </a></h2><p>Key driver analysis can be performed with any of the following techniques.</p>
 <ol>
 <li><strong>Correlations</strong> - <em>appropriate when we're not concerned about multi-collinearity.</em></li>
 <li><strong>Jaccard coefficient/index</strong> - <em>This is similar to correlation, except it is only appropriate when both the predictor and outcome variables are binary.</em></li>
 <li><strong>Generalized Linear Models (GLM)</strong><ul>
-<li>To conduct a valid key driver analysis we need to select an appropriate generalized linear model (GLM) which is consistent with our data.<ul>
+<li>To conduct a valid key driver analysis we need to select an appropriate generalized linear model (GLM) which is consistent with our data. <ul>
 <li><strong>Linear Regression</strong> <em>- for continues target variable</em></li>
-<li><strong>Logistic Regression</strong> <em>- for binary target variable</em></li>
-<li><strong>Quasi Poisson Regression</strong> <em>- for decimal target variable</em></li>
-<li><strong>Ordered Logistic Regression</strong> <em>- for rating or ordered numerical target variable</em></li>
+<li><strong>Logistic Regression</strong> <em>- for a binary target variable </em></li>
+<li><strong>Quasi Poisson Regression</strong> <em>- for a decimal target variable </em></li>
+<li><strong>Ordered Logistic Regression</strong> <em>- for a rating or ordered numerical target variable</em></li>
 </ul>
 </li>
 </ul>
@@ -66,7 +72,7 @@ layout: notebook
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Using-Generalized-Linear-Models-(GLMs)">Using Generalized Linear Models (GLMs)<a class="anchor-link" href="#Using-Generalized-Linear-Models-(GLMs)"> </a></h3><p>In general when we build GLM's it's often observed that the coefficients are negative, however in case of key driver analysis this is an indicative of a problem.
+<h3 id="Using-Generalized-Linear-Models-(GLMs)">Using Generalized Linear Models (GLMs)<a class="anchor-link" href="#Using-Generalized-Linear-Models-(GLMs)"> </a></h3><p>In general when we build GLM's it's often observed that the coefficients are negative, however, in the case of key driver analysis this is an indication of a problem.
 The causes could be:</p>
 <ol>
 <li>The sign is wrong<ul>
@@ -115,7 +121,7 @@ There are, however, two practical difference between the methods:</p>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>{% include warning.html content='Though the theoretical assumptions of <strong>Johnson’s relative weights</strong> and <strong>Shapley regression</strong> assumes a positive importance score. Sometimes we may see negative coefficients, which is a clear indication that key driver analysis is incorrect.' %}</p>
+<p>{% include important.html content='Though the theoretical assumptions of <strong>Johnson’s relative weights</strong> and <strong>Shapley regression</strong> assumes a positive importance score. Sometimes we may see negative coefficients, which is a clear indication that key driver analysis is incorrect.' %}</p>
 
 </div>
 </div>
