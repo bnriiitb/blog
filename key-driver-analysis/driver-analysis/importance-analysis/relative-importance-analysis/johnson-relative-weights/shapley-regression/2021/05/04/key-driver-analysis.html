@@ -175,11 +175,18 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<!-- ![key_drivers.jpeg](attachment:e680f564-e55c-48d1-a9a4-22a6b47e03a9.jpeg) -->
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="What-is-Key-Driver-Analysis?">
 <a class="anchor" href="#What-is-Key-Driver-Analysis?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is Key Driver Analysis?<a class="anchor-link" href="#What-is-Key-Driver-Analysis?"> </a>
 </h2>
-<p><strong>Key Driver Analysis</strong> is also know as <strong>Importance Analysis</strong>, and <strong>Relative Importance Analysis</strong>. The goal of this analysis is to quantify the <em>relative importance</em> of each of the predictor variables in predicting the target variable. Each of the predictors is commonly referred to as a driver.</p>
-<p>Generally the output of Key Driver Analys is a table or chart showing the <em>Relative Importance</em> of the drivers (predictors).</p>
+<p><strong>Key Driver Analysis</strong> is also known as <strong>Importance Analysis</strong> and <strong>Relative Importance Analysis</strong>. The goal of this analysis is to quantify the relative importance of each of the predictor variables in predicting the target variable. Each of the predictors is commonly referred to as a driver.</p>
+<p>Generally, the output of Key Driver Analysis is a table or chart showing the <em>Relative Importance</em> of the drivers (predictors).</p>
 
 </div>
 </div>
@@ -190,7 +197,7 @@ window.onload = wrap_img;
 <h2 id="How-is-it-different-from-traditional-predictive-models?">
 <a class="anchor" href="#How-is-it-different-from-traditional-predictive-models?" aria-hidden="true"><span class="octicon octicon-link"></span></a>How is it different from traditional predictive models?<a class="anchor-link" href="#How-is-it-different-from-traditional-predictive-models?"> </a>
 </h2>
-<p>In classic predictive models the focus is on prediction, whereas with key driver analysis the main focus is on identifying the relative importance of the predictors (drivers).</p>
+<p>In classic predictive models, the focus is on prediction, whereas with key driver analysis the main focus is on identifying the relative importance of the predictors (drivers).</p>
 
 </div>
 </div>
@@ -201,7 +208,7 @@ window.onload = wrap_img;
 <h2 id="What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?">
 <a class="anchor" href="#What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What are the supported target types to perform Key Driver Analysis?<a class="anchor-link" href="#What-are-the-supported-target-types-to-perform-Key-Driver-Analysis?"> </a>
 </h2>
-<p>Key driver analysis can be performed on almost all types of target types that is binary, categorical and numerical.</p>
+<p>Key driver analysis can be performed on almost all types of target types that are binary, categorical, and numerical.</p>
 
 </div>
 </div>
@@ -212,7 +219,7 @@ window.onload = wrap_img;
 <h2 id="How-to-perform-Key-Driver-Analysis?">
 <a class="anchor" href="#How-to-perform-Key-Driver-Analysis?" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to perform Key Driver Analysis?<a class="anchor-link" href="#How-to-perform-Key-Driver-Analysis?"> </a>
 </h2>
-<p>Key driver analysis can be performed with the any of the following techniques.</p>
+<p>Key driver analysis can be performed with any of the following techniques.</p>
 <ol>
 <li>
 <strong>Correlations</strong> - <em>appropriate when we're not concerned about multi-collinearity.</em>
@@ -222,18 +229,18 @@ window.onload = wrap_img;
 </li>
 <li>
 <strong>Generalized Linear Models (GLM)</strong><ul>
-<li>To conduct a valid key driver analysis we need to select an appropriate generalized linear model (GLM) which is consistent with our data.<ul>
+<li>To conduct a valid key driver analysis we need to select an appropriate generalized linear model (GLM) which is consistent with our data. <ul>
 <li>
 <strong>Linear Regression</strong> <em>- for continues target variable</em>
 </li>
 <li>
-<strong>Logistic Regression</strong> <em>- for binary target variable</em>
+<strong>Logistic Regression</strong> <em>- for a binary target variable </em>
 </li>
 <li>
-<strong>Quasi Poisson Regression</strong> <em>- for decimal target variable</em>
+<strong>Quasi Poisson Regression</strong> <em>- for a decimal target variable </em>
 </li>
 <li>
-<strong>Ordered Logistic Regression</strong> <em>- for rating or ordered numerical target variable</em>
+<strong>Ordered Logistic Regression</strong> <em>- for a rating or ordered numerical target variable</em>
 </li>
 </ul>
 </li>
@@ -256,7 +263,7 @@ window.onload = wrap_img;
 <h3 id="Using-Generalized-Linear-Models-(GLMs)">
 <a class="anchor" href="#Using-Generalized-Linear-Models-(GLMs)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Generalized Linear Models (GLMs)<a class="anchor-link" href="#Using-Generalized-Linear-Models-(GLMs)"> </a>
 </h3>
-<p>In general when we build GLM's it's often observed that the coefficients are negative, however in case of key driver analysis this is an indicative of a problem.
+<p>In general when we build GLM's it's often observed that the coefficients are negative, however, in the case of key driver analysis this is an indication of a problem.
 The causes could be:</p>
 <ol>
 <li>The sign is wrong<ul>
@@ -321,9 +328,9 @@ There are, however, two practical difference between the methods:</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
-<div class="flash flash-error">
-    <svg class="octicon octicon-alert octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg>
-    <strong>Warning: </strong>Though the theoretical assumptions of <strong>Johnson’s relative weights</strong> and <strong>Shapley regression</strong> assumes a positive importance score. Sometimes we may see negative coefficients, which is a clear indication that key driver analysis is incorrect.
+<div class="flash flash-warn">
+    <svg class="octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg>
+    <strong>Important: </strong>Though the theoretical assumptions of <strong>Johnson’s relative weights</strong> and <strong>Shapley regression</strong> assumes a positive importance score. Sometimes we may see negative coefficients, which is a clear indication that key driver analysis is incorrect.
 </div>
 
 </div>
