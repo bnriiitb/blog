@@ -1,6 +1,6 @@
 ---
 keywords: fastai
-description: "Key Driver Analysis"
+description: "Key Driver Analysis is used to quantify the relative importance of each of the predictor variables in predicting the target variable"
 title: Key Driver Analysis
 toc: true 
 branch: master
