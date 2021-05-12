@@ -10,14 +10,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
 <meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<link rel="canonical" href="https://bnriiitb.github.io/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html" />
-<meta property="og:url" content="https://bnriiitb.github.io/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html" />
+<link rel="canonical" href="https://bnriiitb.github.io/blog/key-driver-analysis/driver-analysis/importance-analysis/relative-importance-analysis/johnson-relative-weights/shapley-regression/2021/05/04/key-driver-analysis.html" />
+<meta property="og:url" content="https://bnriiitb.github.io/blog/key-driver-analysis/driver-analysis/importance-analysis/relative-importance-analysis/johnson-relative-weights/shapley-regression/2021/05/04/key-driver-analysis.html" />
 <meta property="og:site_name" content="Thirst for Knowledge" />
 <meta property="og:image" content="https://bnriiitb.github.io/blog/images/key_drivers.jpeg" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-05-04T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://bnriiitb.github.io/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html","@type":"BlogPosting","headline":"Key Driver Analysis","dateModified":"2021-05-04T00:00:00-05:00","datePublished":"2021-05-04T00:00:00-05:00","image":"https://bnriiitb.github.io/blog/images/key_drivers.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://bnriiitb.github.io/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html"},"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@context":"https://schema.org"}</script>
+{"url":"https://bnriiitb.github.io/blog/key-driver-analysis/driver-analysis/importance-analysis/relative-importance-analysis/johnson-relative-weights/shapley-regression/2021/05/04/key-driver-analysis.html","@type":"BlogPosting","headline":"Key Driver Analysis","dateModified":"2021-05-04T00:00:00-05:00","datePublished":"2021-05-04T00:00:00-05:00","image":"https://bnriiitb.github.io/blog/images/key_drivers.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://bnriiitb.github.io/blog/key-driver-analysis/driver-analysis/importance-analysis/relative-importance-analysis/johnson-relative-weights/shapley-regression/2021/05/04/key-driver-analysis.html"},"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://bnriiitb.github.io/blog/feed.xml" title="Thirst for Knowledge" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -104,9 +104,6 @@ window.onload = wrap_img;
         <a class="category-tags-link" href="/blog/categories/#key-driver-analysis">key-driver-analysis</a>
         &nbsp;
       
-        <a class="category-tags-link" href="/blog/categories/#shapley-regression">shapley-regression</a>
-        &nbsp;
-      
         <a class="category-tags-link" href="/blog/categories/#driver-analysis">driver-analysis</a>
         &nbsp;
       
@@ -114,6 +111,12 @@ window.onload = wrap_img;
         &nbsp;
       
         <a class="category-tags-link" href="/blog/categories/#relative-importance-analysis">relative-importance-analysis</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#johnson-relative-weights">johnson-relative-weights</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#shapley-regression">shapley-regression</a>
         
       
       </p>
@@ -302,11 +305,14 @@ The causes could be:</p>
 <p>Nevertheless, the two methods give essentially identical results, so there is no need to understand the intricacies of the two methods in order to choose one.
 There are, however, two practical difference between the methods:</p>
 <ul>
-<li>Shapley regression is only applicable for linear regression. </li>
-<li>Johnson’s Relative Weights is applicable for any GLM.</li>
-<li>Johnson’s relative weights is much faster to compute than Shapley Regression.</li>
+<li>
+<strong>Shapley Regression</strong> is only applicable for linear regression. </li>
+<li>
+<strong>Johnson’s Relative Weights</strong> is applicable for any GLM.</li>
+<li>
+<strong>Johnson’s Relative Weights</strong> is much faster to compute than Shapley Regression.</li>
 </ul>
-<p><strong>For these reasons, our preference is to always use Johnson’s relative weights 💪 for Key Driver Analysis</strong></p>
+<p><strong>For these reasons, our preference is to always use Johnson’s Relative Weights 💪 for Key Driver Analysis</strong></p>
 
 </div>
 </div>
@@ -353,7 +359,7 @@ There are, however, two practical difference between the methods:</p>
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/blog/key-driver-analysis/shapley-regression/driver-analysis/importance-analysis/relative-importance-analysis/2021/05/04/key-driver-analysis.html" hidden></a>
+</script><a class="u-url" href="/blog/key-driver-analysis/driver-analysis/importance-analysis/relative-importance-analysis/johnson-relative-weights/shapley-regression/2021/05/04/key-driver-analysis.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
