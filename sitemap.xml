@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://bnriiitb.github.io/blog/jupyter/2020/02/20/test.html</loc>
-<lastmod>2020-02-20T00:00:00-06:00</lastmod>
+<loc>https://bnriiitb.github.io/blog/jupyter/2020/03/10/how_to_choose_regression_models.html</loc>
+<lastmod>2020-03-10T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>https://bnriiitb.github.io/blog/jupyter/2021/03/19/WOE.html</loc>
+<lastmod>2021-03-19T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://bnriiitb.github.io/blog/key-driver-analysis/driver-analysis/importance-analysis/relative-importance-analysis/johnson-relative-weights/shapley-regression/2021/05/04/key-driver-analysis.html</loc>
