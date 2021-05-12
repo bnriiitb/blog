@@ -4,7 +4,7 @@ title: Key Driver Analysis
 toc: true 
 badges: true
 comments: true
-categories: [key-driver-analysis, shapley-regression, driver-analysis, importance-analysis, relative-importance-analysis]
+categories: [key-driver-analysis,driver-analysis,importance-analysis,relative-importance-analysis,johnson-relative-weights,shapley-regression]
 image: images/key_drivers.jpeg
 nb_path: _notebooks/2021-05-04-key-driver-analysis.ipynb
 layout: notebook
@@ -104,11 +104,11 @@ The causes could be:</p>
 <p>Nevertheless, the two methods give essentially identical results, so there is no need to understand the intricacies of the two methods in order to choose one.
 There are, however, two practical difference between the methods:</p>
 <ul>
-<li>Shapley regression is only applicable for linear regression. </li>
-<li>Johnson’s Relative Weights is applicable for any GLM.</li>
-<li>Johnson’s relative weights is much faster to compute than Shapley Regression.</li>
+<li><strong>Shapley Regression</strong> is only applicable for linear regression. </li>
+<li><strong>Johnson’s Relative Weights</strong> is applicable for any GLM.</li>
+<li><strong>Johnson’s Relative Weights</strong> is much faster to compute than Shapley Regression.</li>
 </ul>
-<p><strong>For these reasons, our preference is to always use Johnson’s relative weights 💪 for Key Driver Analysis</strong></p>
+<p><strong>For these reasons, our preference is to always use Johnson’s Relative Weights 💪 for Key Driver Analysis</strong></p>
 
 </div>
 </div>
